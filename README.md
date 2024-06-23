@@ -2,9 +2,9 @@ https://github.com/PrajwalAL22/TicketBookingApplication/assets/144423812/957e8dd
 
 **Technologies Used:**
 
-Frontend: React, TailwindCSS
-Backend: Spring Boot
-Database: MySQL
+**Frontend**: React, TailwindCSS
+**Backend**: Spring Boot
+**Database**: MySQL
 
 **Project Description:**
 The Ticket Booking Application is a comprehensive full-stack project designed to streamline the process of booking and managing tickets for various events and travel needs across different cities. The application leverages modern web technologies to deliver a seamless user experience with a robust and scalable architecture.
