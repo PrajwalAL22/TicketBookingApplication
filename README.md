@@ -1,5 +1,7 @@
 https://github.com/PrajwalAL22/TicketBookingApplication/assets/144423812/957e8ddf-91d9-4214-9d0c-59ca920846e2
 
+**Project is live at :** https://ticket-booking-application-nu.vercel.app/
+
 **Technologies Used:**
 
 **Frontend**: React, TailwindCSS
