@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import AirlineSeatFlatIcon from "@mui/icons-material/AirlineSeatFlat";
 import UserContext from "../Context/UserContext";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 function Home() {
   const [ticketNo, setTicketNo] = useState(1);
@@ -20,10 +21,10 @@ function Home() {
     fetchRemainingSeats();
   }, [currentCity, user]);
 
-  const fetchRemainingSeats = async () => {
+  const fetchRemainingSeats = useCallback(async () => {
     try {
       const response = await fetch(
-        `http://localhost:5458/journey?cityName=${currentCity}`
+        `${API_BASE_URL}/journey?cityName=${currentCity}`
       );
       if (!response.ok) {
         throw new Error(
@@ -37,7 +38,7 @@ function Home() {
     } catch (error) {
       console.error("Error fetching remaining seats:", error);
     }
-  };
+  }, [currentCity, setCurrenCity]);
 
   const handleBookTickets = () => {
     if (!isLoggedIn) {
@@ -48,7 +49,7 @@ function Home() {
     const fetchAllBooking = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5458/getTickets?userId=${user.userId}`
+          `${API_BASE_URL}/getTickets?userId=${user.userId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch booking info");
@@ -92,7 +93,7 @@ function Home() {
 
   const bookTickets = async () => {
     try {
-      const url = `http://localhost:5458/book?userId=${user.userId}&cityName=${currentCity}&noOfTickets=${ticketNo}`;
+      const url = `${API_BASE_URL}/book?userId=${user.userId}&cityName=${currentCity}&noOfTickets=${ticketNo}`;
       const response = await fetch(url, {
         method: "POST",
         // mode: "cors", // or "no-cors" if it's a cross-origin request

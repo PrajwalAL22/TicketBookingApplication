@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../Context/UserContext";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -13,7 +14,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:5458/login?username=${encodeURIComponent(
+      const url = `${API_BASE_URL}/login?username=${encodeURIComponent(
         userId
       )}&password=${encodeURIComponent(password)}`;
 

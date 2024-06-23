@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../Context/UserContext";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 function Cancellations() {
   const { user } = useContext(UserContext);
@@ -18,7 +19,7 @@ function Cancellations() {
   const fetchBookingInfo = async (userId) => {
     try {
       const response = await fetch(
-        `http://localhost:5458/getTickets?userId=${user.userId}`
+        `${API_BASE_URL}/getTickets?userId=${user.userId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch booking info");

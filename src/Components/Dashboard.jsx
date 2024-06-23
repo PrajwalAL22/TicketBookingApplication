@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../Context/UserContext";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 function Dashboard() {
   const { user } = useContext(UserContext);
@@ -18,7 +19,7 @@ function Dashboard() {
   const fetchBookingInfo = async (userId) => {
     try {
       const response = await fetch(
-        `http://localhost:5458/getTickets?userId=${user.userId}`
+        `${API_BASE_URL}/getTickets?userId=${user.userId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch booking info");
@@ -35,7 +36,7 @@ function Dashboard() {
     const cancellTicket = async (bookingId) => {
       try {
         const response = await fetch(
-          `http://localhost:5458/cancell?bookingID=${bookingId}`,
+          `${API_BASE_URL}/cancell?bookingID=${bookingId}`,
           {
             method: "POST",
             headers: {

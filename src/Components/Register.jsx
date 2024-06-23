@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../Config/apiConfig";
 
 const Register = () => {
   const [userId, setUserId] = useState("");
@@ -8,7 +9,7 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const url = `http://localhost:5458/register?username=${encodeURIComponent(
+      const url = `${API_BASE_URL}/register?username=${encodeURIComponent(
         userId
       )}&password=${encodeURIComponent(password)}`;
       const response = await fetch(url, {
